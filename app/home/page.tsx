@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { FaBusinessTime } from "react-icons/fa6";
 import { GrTechnology } from "react-icons/gr";
-import { IoNotifications } from "react-icons/io5";
 import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
 import FeedItem from "../ui/home/feed-item";
 import PeopleYouMayKnow from "../ui/home/people-youmay-know";
