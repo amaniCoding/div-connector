@@ -1,3 +1,5 @@
+import LoadDetailContentForm from "./contents"
+
 export const pepleYouMayKnow = [
   {
     name: 'Amanuel Ferede',
@@ -54,3 +56,6 @@ export const pepleYouMayKnow = [
   }
 
 ]
+
+
+

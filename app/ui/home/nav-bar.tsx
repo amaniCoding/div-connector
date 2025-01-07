@@ -22,27 +22,27 @@ export default function NavBar() {
         <input className="md:block hidden p-2 w-96 border-2 border-gray-300 rounded-md" placeholder="Search Developers ..."></input>
         <div className="md:flex hidden items-center space-x-3 text-gray-500">
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-            <MdOutlineLiveTv className="w-8 h-8" />
+            <MdOutlineLiveTv className="w-6 h-6" />
           </div>
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-            <FaBusinessTime className="w-8 h-8" />
+            <FaBusinessTime className="w-6 h-6" />
           </div>
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-            <MdEventNote className="w-8 h-8" />
+            <MdEventNote className="w-6 h-6" />
           </div>
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-            <GrTechnology className="w-8 h-8" />
+            <GrTechnology className="w-6 h-6" />
           </div>
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-            <MdOutlineAppShortcut className="w-8 h-8 rounded-md transition duration-300 ease-in-out flex hover:bg-slate-50 cursor-pointer" />
+            <MdOutlineAppShortcut className="w-6 h-6 rounded-md transition duration-300 ease-in-out flex hover:bg-slate-50 cursor-pointer" />
           </div>
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
-          <MdPeopleAlt  className="w-8 h-8 rounded-md transition duration-300 ease-in-out flex hover:bg-slate-50 cursor-pointer" />
+          <MdPeopleAlt  className="w-6 h-6 rounded-md transition duration-300 ease-in-out flex hover:bg-slate-50 cursor-pointer" />
           </div>
         </div>
         <div className="flex items-center space-x-3">
-          <MdMessage className="w-8 h-8" />
-          <IoNotifications className="w-8 h-8" />
+          <MdMessage className="w-6 h-6" />
+          <IoNotifications className="w-6 h-6" />
           <Image
             alt="Amanuel Ferede"
             src={`/7.png`}
