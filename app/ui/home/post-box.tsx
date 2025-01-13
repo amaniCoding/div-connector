@@ -104,6 +104,7 @@ export default function PostBox(props: {
       }
       <section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
         <div className="max-w-screen-sm rounded-md p-6 mx-auto overflow-y-scroll socrollabar scroll_content bg-white mt-10 relative">
+          <FaXmark className="w-10 h-10 absolute top-2 right-2 p-2 hover:bg-slate-300 rounded-full cursor-pointer" onClick={() => { props.onClose(false) }} />
           {
             detailPostContentCount > 0 && (
               <p>Your content count {detailPostContentCount}</p>
@@ -112,7 +113,7 @@ export default function PostBox(props: {
           {
             showFirstPostBox && (
               <div>
-                <FaXmark className="w-10 h-10 absolute top-2 right-2 p-2 hover:bg-slate-300 rounded-full cursor-pointer" onClick={() => { props.onClose(false) }} />
+
                 <p className="text-slate-700 text-center font-semibold">Breif detials for your post </p>
                 <p className="my-1 text-sm">Note: this post is shown to user first before it continues to read more !</p>
                 <input type="text" className="p-2 pl-2 border-2 border-gray-400 block w-full focus:outline-none my-2 rounded-lg" placeholder="Title ..." name="title" onChange={handelOnChangeForBreifPostForm} value={briefPostContent?.title}></input>

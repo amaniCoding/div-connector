@@ -7,19 +7,18 @@ import { MdEventNote, MdMessage, MdOutlineAppShortcut, MdOutlineLiveTv, MdPeople
 export default function NavBar() {
   return (
     <nav className="p-3 fixed top-0 left-0 right-0 z-10 bg-white w-full shadow-md">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between space-x-3">
         <div className="flex items-center space-x-2">
           <Image
             alt="Amanuel Ferede"
-            src={`/7.png`}
+            src={`/2.jpg`}
             width={0}
             height={0}
             sizes="100vh"
-            className="w-12 h-12 object-contain rounded-full"
+            className="w-10 h-10 object-center rounded-full border-2 border-blue-700"
           />
-          <span className="md:text-nowrap text-wrap">Amanuel Ferede</span>
         </div>
-        <input className="md:block hidden p-2 w-96 border-2 border-gray-300 rounded-md" placeholder="Search Developers ..."></input>
+        <input className="md:block hidden p-2 grow border-2 border-gray-300 rounded-md" placeholder="Search Developers ..."></input>
         <div className="md:flex hidden items-center space-x-3 text-gray-500">
           <div className="rounded-md transition duration-300 ease-in-out hover:bg-slate-50 py-3 px-6 cursor-pointer">
             <MdOutlineLiveTv className="w-6 h-6" />

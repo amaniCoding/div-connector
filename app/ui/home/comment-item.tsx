@@ -20,7 +20,12 @@ export default function CommentItem() {
           <AiFillLike className="w-6 h-6" />
           <span>2736</span>
         </div>
-        <div className="flex items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer" onClick={handelShowCommentBox}>
+        <div className="md:flex hidden items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer" onClick={handelShowCommentBox}>
+          <FaComment className="w-6 h-6" />
+          <span>2736</span>
+        </div>
+
+        <div className="md:hidden flex items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer">
           <FaComment className="w-6 h-6" />
           <span>2736</span>
         </div>

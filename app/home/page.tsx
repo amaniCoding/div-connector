@@ -5,12 +5,14 @@ import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/
 import FeedItem from "../ui/home/feed-item";
 import PeopleYouMayKnow from "../ui/home/people-youmay-know";
 import AddPost from "../ui/home/add-post";
+import NavBar from "../ui/home/nav-bar";
 export default async function Page() {
   return (
-    <>
-      <section className="bg-slate-50 mt-[68px]">
+    <div className="bg-slate-50 pt-[90px]">
+      <NavBar/>
+      <section className="">
         <div className="max-w-screen-xl mx-auto">
-          <div className="flex md:flex-row flex-col space-x-4 space-y-3">
+          <div className="flex">
             <div className="w-[30%] md:block hidden h-screen sticky top-20">
               <div className="w-full h-36 flex items-center justify-center">
                 <div className="w-1/2 flex flex-col items-center justify-center">
@@ -52,7 +54,7 @@ export default async function Page() {
               <AddPost/> 
               <FeedItem />
             </div>
-            <div className="md:w-[30%] w-full pb-32 h-screen sticky top-24 scroll_content socrollabar">
+            <div className="md:w-[30%] w-full md:block hidden pb-32 h-screen sticky top-24 scroll_content socrollabar">
               <PeopleYouMayKnow />
               <p className="underline md:ml-24 cursor-pointer">See All</p>
             </div>
@@ -60,6 +62,6 @@ export default async function Page() {
         </div>
       </section>
       
-    </>
+    </div>
   )
 }
