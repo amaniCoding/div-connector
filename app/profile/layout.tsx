@@ -6,6 +6,7 @@ import { GrTechnology } from "react-icons/gr";
 import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
 import FeedItem from "../ui/home/feed-item";
 import AddPost from "../ui/home/add-post";
+import Link from "next/link";
 export const metadata: Metadata = {
   title: "Amanuel Ferede",
 };
@@ -19,57 +20,64 @@ export default function RootLayout({
       <body
       >
         <NavBar />
-        <section className="bg-slate-100 mt-[73px]">
-          <div className="max-w-screen-lg mx-auto">
-            <div className="w-full h-[90vh] pb-1">
-              <div className="h-[70vh] relative w-full">
+        <section className="bg-slate-100 mt-[66px]">
+          <div className="w-full bg-white">
+            <div className="max-w-screen-lg mx-auto">
+              <div className="w-full h-[60vh] pb-1 relative bg-[url('/feeds/5.jpg')] bg-no-repeat bg-cover">
+
+              </div>
+
+              <div className="w-full px-3 py-6 bg-white relative">
                 <Image
+                  className="w-40 h-40 rounded-full object-center absolute -top-1/2 left-10 border-4 border-white"
                   alt="Amanuel Ferede"
-                  src={`/feeds/8.jpg`}
+                  src={`/feeds/4.jpg`}
                   width={0}
                   height={0}
                   sizes="100vh"
-                  className="w-full h-full object-cover"
                 />
-                <div className="flex items-center justify-center absolute -bottom-28 left-6">
-                  <div className="flex flex-col space-y-1">
-                    <Image
-                      alt="Amanuel Ferede"
-                      src={`/feeds/9.jpg`}
-                      width={0}
-                      height={0}
-                      sizes="100vh"
-                      className="object-cover w-44 h-44 bg-red-100 rounded-full border-4 border-white"
-                    />
-                    <p className="text-xl font-bold">Amanuel Ferede</p>
+
+                <div className="p-3 flex items-center md:ml-48 space-x-5 md:mt-0 mt-12">
+                  <div>
+                    <p className="text-lg font-bold">Amanuel Ferede</p>
+                    <p>972 followers</p>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Link href={`/#`} className="block px-3 py-2 bg-gray-200 rounded-lg">Follow</Link>
+                    <Link href={`/#`} className="block px-3 py-2 bg-blue-500 text-white rounded-lg">Follow</Link>
                   </div>
                 </div>
               </div>
+
+
+
+              <div className="w-full bg-white">
+                <div className="flex items-center max-w-[900px] mx-auto border-t-2 border-t-slate-300 p-2  mb-5">
+                  <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                    <MdOutlineLiveTv className="w-6 h-6" />
+                    <span>Vidoes</span>
+                  </div>
+                  <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                    <FaBusinessTime className="w-6 h-6" />
+                    <span>Jobs</span>
+                  </div>
+                  <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                    <MdEventNote className="w-6 h-6" />
+                    <span>Events</span>
+                  </div>
+                  <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                    <MdOutlineAppShortcut className="w-6 h-6" />
+                    <span>Shorts</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div className="flex items-center max-w-[900px] mx-auto space-x-3 border-t-2 border-t-slate-300 p-2">
-              <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                <MdOutlineLiveTv className="w-6 h-6" />
-                <span>Vidoes</span>
-              </div>
-              <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                <FaBusinessTime className="w-6 h-6" />
-                <span>Jobs</span>
-              </div>
-              <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                <MdEventNote className="w-6 h-6" />
-                <span>Events</span>
-              </div>
-              <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                <GrTechnology className="w-6 h-6" />
-                <span>Tech Companies</span>
-              </div>
-              <div className="p-2 flex items-center justify-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                <MdOutlineAppShortcut className="w-6 h-6" />
-                <span>Shorts</span>
-              </div>
-            </div>
-            <div className="flex space-x-5 max-w-[900px] mx-auto">
-              <div className="md:w-[40%] w-full p-3 bg-white rounded-lg sticky top-20 h-screen">
+          </div>
+
+          <div className="max-w-screen-lg mx-auto">
+          <div className="flex md:space-x-5 max-w-[900px] mx-auto">
+              <div className="md:w-[40%] md:block hidden p-3 bg-white rounded-lg sticky top-20 h-screen">
                 <div>
                   <p className="p-1 bg-slate-100 my-1 text-sm">Full Stack Software Engineer at Andela</p>
                   <p>Knows React, Next.js, Tailwind.css, HTML, CSS, JAVASCRIPT and more</p>
