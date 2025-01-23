@@ -11,6 +11,7 @@ export default function AddPost() {
   }
   return (
     <>
+    
       <div className="p-3 mb-4 bg-white rounded-lg">
         <div className="w-full flex md:items-center space-x-3">
           <Image

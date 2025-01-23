@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react";
-export default function Comment() {
+export default function CommentModal() {
   const [showMiniProfileBox, setshowMiniProfileBox] = useState<boolean>(false);
 
   const [mTimeOut, setMTimeOut] = useState<NodeJS.Timeout>();
@@ -15,7 +15,7 @@ export default function Comment() {
 
 
   const handelhideMiniProfileBox = () => {
-    const returnedTimeOut = setTimeout(() => { setshowMiniProfileBox(false) }, 2000);
+    const returnedTimeOut = setTimeout(() => { setshowMiniProfileBox(false) }, 100);
     setMTimeOut(returnedTimeOut);
 
 
@@ -29,13 +29,13 @@ export default function Comment() {
     setshowMiniProfileBox(false);
   }
   return (
-    <div className="pb-36 sticky top-16 h-screen overflow-y-scroll socrollabar p-6">
+    <div className="p-6">
 
       {
         Array.from(Array(10).keys()).map((_, i) => {
           return (
-            <div className="relative" key={i}>
-              <div className={`absolute left-3 rounded-lg top-16 w-3/4 p-3 space-x-3 bg-white shadow-lg z-20 ${currentIndex === i && showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseMove={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
+            <div className="relative mb-3" key={i}>
+              <div className={`absolute left-11 top-11 rounded-lg w-auto p-3 space-x-3 bg-white shadow-lg z-[9999] ${currentIndex === i && showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseOver={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
                 <Image
                   alt="Amanuel Ferede"
                   src={`/feeds/${i + 1}.jpg`}
@@ -50,8 +50,8 @@ export default function Comment() {
                   <p>Lives in Newyork</p>
                 </div>
               </div>
-              <div className="inline-flex space-x-3" key={i}>
-                <Link href={`/profile`} onMouseEnter={() => {handelshowMiniProfileBox(i)}} onMouseLeave={handelhideMiniProfileBox} className="bg-red-300 h-10 w-10 block rounded-full flex-none">
+              <div className="flex space-x-3" key={i}>
+                <Link href={`/profile`} onMouseMove={() => {handelshowMiniProfileBox(i)}} onMouseLeave={handelhideMiniProfileBox} className="bg-red-300 h-10 w-10 block rounded-full flex-none">
                   <Image
                     alt="Amanuel Ferede"
                     src={`/feeds/${i + 1}.jpg`}
@@ -62,12 +62,16 @@ export default function Comment() {
                   />
                 </Link>
 
-                <div className="flex flex-col space-y-0.5 grow">
-                  <Link href={`/profile`} onMouseEnter={() => {handelshowMiniProfileBox(i)}} onMouseLeave={handelhideMiniProfileBox} className="peer"><span className="font-semibold">Amanuel Ferede</span></Link>
-                  <span className="text-gray-400 text-sm">2 Hours</span>
-                  <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, officiis molestias! Consequatur sit nesciunt numquam ipsum perferendis illum velit quod blanditiis eaque. Adipisci expedita vel omnis inventore pariatur, commodi vitae.</span>
+                <div className="">
+                  <Link href={`/profile`} onMouseOver={() => {handelshowMiniProfileBox(i)}} onMouseLeave={handelhideMiniProfileBox} className="font-semibold">Amanuel Ferede</Link>
+                  <p className="text-gray-400 text-sm">2 Hours</p>
+                  <div className="w-auto rounded-xl bg-slate-50 p-3">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, officiis molestias! Consequatur sit nesciunt numquam ipsum perferendis illum velit quod blanditiis eaque. Adipisci expedita vel omnis inventore pariatur, commodi vitae.</p>
+                  </div>
                 </div>
+                
               </div>
+              
             </div>
           )
         })

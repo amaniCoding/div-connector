@@ -6,15 +6,16 @@ import { IoShareSocial } from "react-icons/io5";
 import { AiFillLike } from "react-icons/ai";
 import { Dispatch, SetStateAction } from "react";
 import Comment from "./comment";
+import CommentModal from "../comment-modal";
 
 export default function CommentBox(props: {
   onClose: Dispatch<SetStateAction<boolean>>
 }) {
   return (
-    <section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden flex items-center justify-center">
-      <div className="max-w-screen-md h-4/5 rounded-md  overflow-y-scroll socrollabar scroll_content bg-white  relative ">
+    <section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-10 overflow-hidden flex items-center justify-center">
+      <div className="max-w-screen-md h-4/5 rounded-md  overflow-y-scroll socrollabar scroll_content bg-white z ">
 
-        <div className="fixed flex space-x-2 bottom-14 left-0 right-0 p-2 bg-white max-w-screen-md mx-auto">
+        <div className="fixed flex space-x-2 bottom-14 left-0 right-0 p-2 z-30 bg-white max-w-screen-md mx-auto">
 
             <Image
               alt="Amanuel Ferede"
@@ -24,10 +25,10 @@ export default function CommentBox(props: {
               sizes="100vh"
               className="w-10 h-10 object-cover rounded-full block flex-none"
             />
-            <input type="text" className="p-3 block grow focus:outline-none bg-gray-100" placeholder="Write a comment ..."></input>
+            <input type="text" className="p-3 block grow focus:outline-none bg-slate-50 rounded-xl" placeholder="Write a comment ..."></input>
 
         </div>
-        <div className="flex items-center justify-between mb-2 border-b-2 border-b-slate-200 p-2">
+        <div className="flex items-center justify-between mb-2 border-b-2 border-b-slate-200 p-2 sticky z-50 w-full left-0 right-0 bg-white top-0">
           <span></span>
           <span>Amanuel Ferede's Post</span>
           <FaXmark className="w-10 h-10 rounded-full hover:bg-slate-300 p-2 cursor-pointer" onClick={() => { props.onClose(false) }} />
@@ -81,7 +82,7 @@ export default function CommentBox(props: {
         </div>
 
        <div className="p-2 pb-14">
-        <Comment/>
+        <CommentModal/>
        </div>
 
 

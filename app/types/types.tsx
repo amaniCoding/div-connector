@@ -1,5 +1,3 @@
-import { JSX } from "react";
-
 export type Breif = {
   title?: string;
   description?: string;
@@ -12,6 +10,8 @@ export type Contnet = {
   codeSnippet?: string;
   photo?: string;
 }
+
+
 
 
 

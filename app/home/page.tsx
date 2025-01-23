@@ -2,14 +2,18 @@ import Image from "next/image";
 import { FaBusinessTime } from "react-icons/fa6";
 import { GrTechnology } from "react-icons/gr";
 import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
-import FeedItem from "../ui/home/feed-item";
+import FeedItem from "../ui/home/feed-items";
 import PeopleYouMayKnow from "../ui/home/people-youmay-know";
 import AddPost from "../ui/home/add-post";
 import NavBar from "../ui/home/nav-bar";
+import { fetchPosts } from "../libs/data";
+import { Suspense } from "react";
+import FeedItemSkeleton from "../ui/skeletons/feed_item";
 export default async function Page() {
+  
   return (
     <div className="bg-slate-50 pt-[90px]">
-      <NavBar/>
+      <NavBar />
       <section className="">
         <div className="max-w-screen-xl mx-auto">
           <div className="flex">
@@ -51,8 +55,10 @@ export default async function Page() {
               </div>
             </div>
             <div className="md:w-[40%] w-full">
-              <AddPost/> 
-              <FeedItem />
+              <AddPost />
+              <Suspense fallback={<FeedItemSkeleton/>}>
+                <FeedItem />
+              </Suspense>
             </div>
             <div className="md:w-[30%] w-full md:block hidden pb-32 h-screen sticky top-24 scroll_content socrollabar">
               <PeopleYouMayKnow />
@@ -61,7 +67,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      
+
     </div>
   )
 }
