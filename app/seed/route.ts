@@ -1,6 +1,6 @@
 import { db } from "@vercel/postgres";
 import bcrypt from 'bcrypt';
-import { posts, users } from "../libs/place-holder";
+import { users } from "../libs/place-holder";
 const client = await db.connect();
 
 async function seedUsers() {
@@ -68,7 +68,7 @@ export async function seedPost() {
       date DATE DEFAULT CURRENT_DATE
     );
   `;
-  console.log('table created successfully');
+
   
 }
 
@@ -76,7 +76,7 @@ export async function GET() {
   try {
     await client.sql`BEGIN`;
     //await seedUsers();
-    await seedPost();
+    //await seedPost();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
