@@ -33,7 +33,7 @@ export default function FeedItem(props: { post: QueryResultRow }) {
     setshowMiniProfileBox(false);
   }
   return (
-    <div className="pb-3 pt-2 bg-white rounded-md mb-4 relative">
+    <div className="py-2 bg-white rounded-md mb-4 relative">
       <div className={`absolute -left-32 rounded-lg top-16 w-auto p-3 space-x-3 bg-white shadow-lg ${showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseMove={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
         <Image
           className="w-14 h-14 rounded-full object-center"
@@ -50,7 +50,7 @@ export default function FeedItem(props: { post: QueryResultRow }) {
         </div>
       </div>
       <div className="flex justify-between">
-        <div className="flex space-x-3 p-2">
+        <div className="flex space-x-3 px-6 pt-2">
           <Link href={`/profile`} onMouseEnter={handelshowMiniProfileBox} onMouseLeave={handelhideMiniProfileBox}>
             <Image
               alt="Amanuel Ferede"
@@ -69,7 +69,7 @@ export default function FeedItem(props: { post: QueryResultRow }) {
         <IoMdMore className="w-8 h-8" />
       </div>
 
-      <div className="my-1">
+      <div className="my-1 p-2">
         <p className="text-xl font-bold px-3">{props.post.breif_title}</p>
         <p className="text-justify px-3 whitespace-pre-wrap">{props.post.breif_description} . . . {props.post.cont_0_description ? <Link href={`/post/${props.post.post_id}/`}>Read More</Link> : ""}</p>
 
