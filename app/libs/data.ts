@@ -3,7 +3,7 @@ import { sql } from "@vercel/postgres";
 export async function fetchPosts() {
   try {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    const data = await sql`SELECT * FROM posts JOIN users ON posts.user_id = users.user_id`;
+    const data = await sql`SELECT * FROM posts JOIN users ON posts.user_id = users.user_id ORDER BY date DESC`;
     return data.rows
   } catch(error) {
     console.log("Database error", error)

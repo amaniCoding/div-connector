@@ -2,6 +2,7 @@
 import Image from "next/image"
 import PostBox from "./post-box"
 import { useState } from "react"
+import Link from "next/link";
 export default function AddPost() {
   const [isPostBoxShow, setIsPostBoxShown] = useState<boolean>(false);
 
@@ -22,12 +23,9 @@ export default function AddPost() {
             sizes="100vh"
             className="w-10 h-10 object-cover rounded-full border-2 border-black/40"
           />
-          <input className="md:w-3/4 md:block hidden w-full border-2 border-gray-200 focus:outline-none p-2 bg-gray-100 rounded-3xl placeholder:font-sans pl-5" placeholder="What is in your mind ..., Amanuel" onFocus={showPostBox}></input>
+          <button type="button" className="md:w-3/4 md:block hidden w-full outline-none focus:outline-none p-2 bg-blue-500 rounded-3xl placeholder:font-sans pl-5 text-white" onFocus={showPostBox}>Creat Your Post</button>
 
-          <div className="md:hidden space-x-3 flex grow">
-            <textarea className="grow border-2 border-gray-200 focus:outline-none p-2 bg-gray-100 rounded-lg placeholder:font-sans pl-5 resize-none" placeholder="What is in your mind ..., Amanuel" rows={2}></textarea>
-            <button className="px-3 max-h-12 rounded-md py-1 text-center bg-blue-600 text-white">Post</button>
-          </div>
+          <Link href={`/create-post`} className="md:w-3/4 md:hidden block w-full outline-none focus:outline-none p-2 bg-blue-500 text-center rounded-3xl placeholder:font-sans pl-5 text-white">Creat Your Post</Link>
 
         </div>
       </div>

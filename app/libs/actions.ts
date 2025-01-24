@@ -177,14 +177,6 @@ export async function createPost(prevState: State | undefined, formData: FormDat
     }
   }
 
-
- 
-  
-
-
-
-
-
   try {
       
     const post = {

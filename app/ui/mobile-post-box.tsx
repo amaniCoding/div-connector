@@ -1,12 +1,13 @@
+
+
 'use client'
 
 import { Dispatch, SetStateAction, useActionState, useEffect, useState } from "react"
 import { FaXmark } from "react-icons/fa6"
-import Form from "../form"
+import Form from "./form"
 import { createPost, State } from "@/app/libs/actions"
-export default function PostBox(props: {
-  onClose: Dispatch<SetStateAction<boolean>>
-}) {
+import { redirect } from "next/navigation"
+export default function MobilePostBox() {
   const [contentIndex, setContentIndex] = useState<number>(0);
   const [toShowBreifContent, setTtoShowBreifContent] = useState<boolean>(true);
   const [formArray, setFormArray] = useState<any[]>([]);
@@ -33,25 +34,18 @@ export default function PostBox(props: {
       setTtoShowBreifContent(false);
     }
   }
+
   useEffect(() => {
     if (state?.success) {
-      props.onClose(false);
+      redirect('/home');
     }
   }, [state?.success])
-
   return (
     <>
-      {
-        toShowBox && (<section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-30 overflow-hidden">
-          <div className="max-w-screen-sm rounded-md p-6 mx-auto bg-white mt-32">
-            <p className="my-2">Your content can not be more than 4</p>
-            <button className="px-2 py-1 bg-blue-500 text-white rounded-md" onClick={() => { settoShowBox(false) }}>Ok</button>
-          </div>
-        </section>)
-      }
-      <section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
-        <div className="max-w-screen-sm rounded-md p-6 mx-auto overflow-y-scroll socrollabar scroll_content bg-white relative h-[80vh] mt-10">
-          <FaXmark className="w-10 h-10 absolute top-2 right-2 p-2 hover:bg-slate-300 rounded-full cursor-pointer" onClick={() => { props.onClose(false) }} />
+
+      <section className="md:pt-[80px] pt-[70px]">
+        <div className="w-full rounded-md p-3">
+
           <p className="font-bold my-1">Your content count {contentIndex === 0 ? "" : contentIndex}</p>
           <form className="flex flex-col space-y-3" action={formAction}>
             <div className={`flex-col space-y-6 border-b-2 border-b-gray-100 pb-3 mb-3 ${toShowBreifContent ? 'flex' : 'hidden'}`}>
@@ -83,6 +77,14 @@ export default function PostBox(props: {
 
               {!toShowBreifContent && <button type="submit" className="px-3 py-2 bg-blue-500 text-white rounded-md text-center w-36">{pending ? "Posting..." : "Post"}</button>}
             </div>
+            {
+              toShowBox && (<section className="">
+                <div className="w-full rounded-md p-3 bg-red-50">
+                  <p className="my-2 font-bold text-red-500">Your content can not be more than 4</p>
+                  <button className="px-2 py-1 bg-blue-500 text-white rounded-md" onClick={() => { settoShowBox(false) }}>Ok</button>
+                </div>
+              </section>)
+            }
           </form>
         </div>
       </section>

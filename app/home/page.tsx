@@ -6,13 +6,12 @@ import FeedItem from "../ui/home/feed-items";
 import PeopleYouMayKnow from "../ui/home/people-youmay-know";
 import AddPost from "../ui/home/add-post";
 import NavBar from "../ui/home/nav-bar";
-import { fetchPosts } from "../libs/data";
 import { Suspense } from "react";
 import FeedItemSkeleton from "../ui/skeletons/feed_item";
 export default async function Page() {
   
   return (
-    <div className="bg-slate-50 pt-[90px]">
+    <div className="bg-slate-50 md:pt-[80px] pt-[70px]">
       <NavBar />
       <section className="">
         <div className="max-w-screen-xl mx-auto">
