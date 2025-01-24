@@ -13,13 +13,13 @@ export default async function Page(props: { params: Promise<{ post_id: string }>
   return (
     <>
       <NavBar />
-      <section className="p-5 bg-slate-50 pt-[90px]">
-        <div className="max-w-[1100px] mx-auto p-6">
-          <div className="grid grid-cols-12 gap-14">
-            <div className="md:col-span-7 col-span-12 bg-white">
+      <section className="bg-slate-50 md:pt-[80px] pt-[70px]">
+        <div className="md:max-w-screen-xl w-full md:mx-auto">
+          <div className="grid grid-cols-12 gap-5">
+            <div className="md:col-span-8 col-span-12 bg-white">
               <ProfileItem post={post}/>
             </div>
-            <div className="md:col-span-5 col-span-12 bg-white">
+            <div className="md:col-span-4 col-span-12 bg-white">
               <Comment/>
             </div>
           </div>

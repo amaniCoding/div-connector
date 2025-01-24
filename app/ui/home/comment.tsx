@@ -29,13 +29,13 @@ export default function Comment() {
     setshowMiniProfileBox(false);
   }
   return (
-    <div className="pb-36 sticky top-16 h-screen overflow-y-scroll socrollabar p-6">
+    <div className="pb-36 md:sticky md:top-16 md:h-screen md:overflow-y-scroll md:socrollabar md:p-6 p-3">
 
       {
-        Array.from(Array(10).keys()).map((_, i) => {
+        Array.from(Array(5).keys()).map((_, i) => {
           return (
-            <div className="relative" key={i}>
-              <div className={`absolute left-3 rounded-lg top-16 w-3/4 p-3 space-x-3 bg-white shadow-lg z-20 ${currentIndex === i && showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseMove={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
+            <div className="relative mb-5" key={i}>
+              <div className={`absolute left-3 rounded-lg top-11 w-3/4 p-3 space-x-3 bg-white shadow-lg z-20 ${currentIndex === i && showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseMove={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
                 <Image
                   alt="Amanuel Ferede"
                   src={`/feeds/${i + 1}.jpg`}
@@ -65,7 +65,7 @@ export default function Comment() {
                 <div className="flex flex-col space-y-0.5 grow">
                   <Link href={`/profile`} onMouseEnter={() => {handelshowMiniProfileBox(i)}} onMouseLeave={handelhideMiniProfileBox} className="peer"><span className="font-semibold">Amanuel Ferede</span></Link>
                   <span className="text-gray-400 text-sm">2 Hours</span>
-                  <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, officiis molestias! Consequatur sit nesciunt numquam ipsum perferendis illum velit quod blanditiis eaque. Adipisci expedita vel omnis inventore pariatur, commodi vitae.</span>
+                  <span className="leading-relaxed">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, officiis molestias! Consequatur sit nesciunt numquam ipsum perferendis illum velit quod blanditiis eaque. Adipisci expedita vel omnis inventore pariatur, commodi vitae.</span>
                 </div>
               </div>
             </div>
