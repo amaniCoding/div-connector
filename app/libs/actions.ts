@@ -1,39 +1,13 @@
 'use server'
 import { sql } from '@vercel/postgres';
 import { writeFile } from 'fs/promises';
-import mime from "mime";
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+import { put } from '@vercel/blob';
+
 import { join } from 'path';
 import { z } from 'zod'
 
 
-function mysql_real_escape_string(str: string) {
-  return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
-    switch (char) {
-      case "\0":
-        return "\\0";
-      case "\x08":
-        return "\\b";
-      case "\x09":
-        return "\\t";
-      case "\x1a":
-        return "\\z";
-      case "\n":
-        return "\\n";
-      case "\r":
-        return "\\r";
-      case "\"":
-      case "'":
-      case "\\":
-      case "%":
-        return "\\" + char; // prepends a backslash to backslash, percent,
-      // and double/single quotes
-      default:
-        return char;
-    }
-  });
-}
 const postSchema = z.object({
 
   breif_title: z.string({
@@ -107,76 +81,39 @@ export async function createPost(prevState: State | undefined, formData: FormDat
     cont_photo_3: formData.get('cont_photo_3') as File || null,
   }
 
-  const relativeUploadDir = '/uploads/posts';
+
 
   let breiffileUrl;
   let fileNameUrl0;
   let fileNameUrl1;
   let fileNameUrl2;
   let fileNameUrl3;
-  const uploadDir = join(process.cwd(), "public", relativeUploadDir);
 
-  if (invalidateFields.breif_photo) {
-    try {
-      const bufferBrief = Buffer.from(await invalidateFields.breif_photo.arrayBuffer());
-    const breifFileName = Date.now() + invalidateFields.breif_photo
-      .name.replaceAll(" ", "_");
-    await writeFile(`${uploadDir}/${breifFileName}`, bufferBrief);
-    breiffileUrl = `${relativeUploadDir}/${breifFileName}`;
-    } catch(error) {
-      console.log('unable to upload a photo')
-    }
 
-  }
+  const blob = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+    access: 'public',
+  });
 
-  if(invalidateFields.cont_photo_0) {
-    try {
-      const buffer0 = Buffer.from(await invalidateFields.cont_photo_0.arrayBuffer());
-    const fileName0 = Date.now() + invalidateFields.breif_photo
-      .name.replaceAll(" ", "_");
-    await writeFile(`${uploadDir}/${fileName0}`, buffer0);
-    fileNameUrl0 = `${relativeUploadDir}/${fileName0}`;
-    } catch(error) {
-      console.log('unable to upload a photo')
-    }
-  }
+  breiffileUrl = blob.url;
 
-  if(invalidateFields.cont_photo_1) {
-    try {
-      const buffer1 = Buffer.from(await invalidateFields.cont_photo_1.arrayBuffer());
-    const fileName1 = Date.now() + invalidateFields.breif_photo
-      .name.replaceAll(" ", "_");
-    await writeFile(`${uploadDir}/${fileName1}`, buffer1);
-    fileNameUrl1 = `${relativeUploadDir}/${fileName1}`;
-    } catch(error) {
-      console.log('unable to upload a photo')
-    }
-  }
+  const blob0 = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+    access: 'public',
+  });
 
-  if(invalidateFields.cont_photo_2) {
-    try {
-      const buffer2 = Buffer.from(await invalidateFields.cont_photo_2.arrayBuffer());
-    const fileName2 = Date.now() + invalidateFields.breif_photo
-      .name.replaceAll(" ", "_");
-    await writeFile(`${uploadDir}/${fileName2}`, buffer2);
-    fileNameUrl2 = `${relativeUploadDir}/${fileName2}`;
-    } catch(error) {
-      console.log('unable to upload a photo')
-    }
-  }
+  fileNameUrl0 = blob0.url;
 
-  if(invalidateFields.cont_photo_3) {
-    try {
-      const buffer3 = Buffer.from(await invalidateFields.breif_photo.arrayBuffer());
-    const fileName3 = Date.now() + invalidateFields.breif_photo
-      .name.replaceAll(" ", "_");
-    await writeFile(`${uploadDir}/${fileName3}`, buffer3);
-    fileNameUrl3 = `${relativeUploadDir}/${fileName3}`;
-    } catch(error) {
-      console.log('unable to upload a photo')
-    }
-  }
-
+  const blob1 = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+    access: 'public',
+  });
+  fileNameUrl1 = blob1.url;
+  const blob2 = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+    access: 'public',
+  });
+  fileNameUrl2 = blob2.url;
+  const blob3 = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+    access: 'public',
+  });
+  fileNameUrl3 = blob3.url;
   try {
       
     const post = {
