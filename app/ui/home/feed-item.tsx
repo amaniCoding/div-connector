@@ -83,6 +83,7 @@ export default function FeedItem(props: { post: QueryResultRow }) {
           src={`${props.post.photo}`}
           width={0}
           height={0}
+          unoptimized
           sizes="100vh"
           className="object-cover w-full"
         />
