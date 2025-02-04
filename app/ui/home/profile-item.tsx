@@ -97,8 +97,9 @@ export default function ProfileItem(props: { post: QueryResultRow }) {
             src={`${props.post?.cont_1_photo}`}
             width={0}
             height={0}
+            unoptimized
             sizes="100vh"
-            className="w-full object-cover"
+            className="object-cover w-full"
           />
         </div>
 
@@ -111,8 +112,9 @@ export default function ProfileItem(props: { post: QueryResultRow }) {
             src={`${props.post?.cont_2_photo}`}
             width={0}
             height={0}
+            unoptimized
             sizes="100vh"
-            className="w-full object-cover"
+            className="object-cover w-full"
           />
         </div>
 
@@ -125,8 +127,9 @@ export default function ProfileItem(props: { post: QueryResultRow }) {
             src={`${props.post?.cont_3_photo}`}
             width={0}
             height={0}
+            unoptimized
             sizes="100vh"
-            className="w-full object-cover"
+            className="object-cover w-full"
           />
         </div>
       </div>
