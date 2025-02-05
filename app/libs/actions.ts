@@ -28,7 +28,7 @@ export type State = {
   message?: string | null;
   success: boolean;
 };
-export async function createPost(prevState: State | 'undefined', formData: FormData) {
+export async function createPost(prevState: State | undefined, formData: FormData) {
 
 
 
