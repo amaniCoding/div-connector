@@ -90,8 +90,8 @@ export async function createPost(prevState: State | undefined, formData: FormDat
   let fileNameUrl3;
 
 
- if(invalidateFields.breif_photo) {
- const blob = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+ if(invalidateFields.breif_photo?.size !== 0) {
+ const blob = await put(invalidateFields.breif_photo?.name, invalidateFields.breif_photo, {
     access: 'public',
   });
 
