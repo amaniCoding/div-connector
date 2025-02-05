@@ -28,7 +28,7 @@ export type State = {
   message?: string | null;
   success: boolean;
 };
-export async function createPost(prevState: State | undefined, formData: FormData) {
+export async function createPost(prevState: State | 'undefined', formData: FormData) {
 
 
 
@@ -52,33 +52,33 @@ export async function createPost(prevState: State | undefined, formData: FormDat
 
   const invalidateFields = {
 
-    breif_photo: formData.get('breif_photo') as File || null,
+    breif_photo: formData.get('breif_photo') as File,
 
 
 
-    cont_title_0: formData.get('cont_title_0') as string || null,
-    cont_desc_0: formData.get('cont_desc_0') as string || null,
-    cont_codesnip_0: formData.get('cont_codesnip_0') as string || null,
-    cont_photo_0: formData.get('cont_photo_0') as File || null,
+    cont_title_0: formData.get('cont_title_0') as string,
+    cont_desc_0: formData.get('cont_desc_0') as string,
+    cont_codesnip_0: formData.get('cont_codesnip_0') as string,
+    cont_photo_0: formData.get('cont_photo_0') as File,
 
 
 
 
-    cont_title_1: formData.get('cont_title_1') as string || null,
-    cont_desc_1: formData.get('cont_desc_1') as string || null,
-    cont_codesnip_1: formData.get('cont_codesnip_1') as string || null,
-    cont_photo_1: formData.get('cont_photo_1') as File || null,
+    cont_title_1: formData.get('cont_title_1') as string,
+    cont_desc_1: formData.get('cont_desc_1') as string,
+    cont_codesnip_1: formData.get('cont_codesnip_1') as string,
+    cont_photo_1: formData.get('cont_photo_1') as File,
 
-    cont_title_2: formData.get('cont_title_2') as string || null,
-    cont_desc_2: formData.get('cont_desc_2') as string || null,
-    cont_codesnip_2: formData.get('cont_codesnip_2') as string || null,
-    cont_photo_2: formData.get('cont_photo_2') as File || null,
+    cont_title_2: formData.get('cont_title_2') as string,
+    cont_desc_2: formData.get('cont_desc_2') as string,
+    cont_codesnip_2: formData.get('cont_codesnip_2') as string,
+    cont_photo_2: formData.get('cont_photo_2') as File,
 
 
-    cont_title_3: formData.get('cont_title_3') as string || null,
-    cont_desc_3: formData.get('cont_desc_3') as string || null,
-    cont_codesnip_3: formData.get('cont_codesnip_3') as string || null,
-    cont_photo_3: formData.get('cont_photo_3') as File || null,
+    cont_title_3: formData.get('cont_title_3') as string,
+    cont_desc_3: formData.get('cont_desc_3') as string,
+    cont_codesnip_3: formData.get('cont_codesnip_3') as string,
+    cont_photo_3: formData.get('cont_photo_3') as File,
   }
 
 
@@ -90,32 +90,46 @@ export async function createPost(prevState: State | undefined, formData: FormDat
   let fileNameUrl3;
 
 
-  const blob = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
+ if(invalidateFields.breif_photo) {
+ const blob = await put(invalidateFields.breif_photo.name, invalidateFields.breif_photo, {
     access: 'public',
   });
 
   breiffileUrl = blob.url;
+ }
 
-  const blob0 = await put(invalidateFields.cont_photo_0.name, invalidateFields.cont_photo_0, {
-    access: 'public',
-  });
+  if (invalidateFields.cont_photo_0?.size !== 0) {
+    console.log(invalidateFields.cont_photo_0?.size);
+    const blob0 = await put(invalidateFields.cont_photo_0?.name, invalidateFields.cont_photo_0, {
+      access: 'public',
+    });
 
-  fileNameUrl0 = blob0.url;
+    fileNameUrl0 = blob0.url;
+  }
 
-  const blob1 = await put(invalidateFields.cont_photo_1.name, invalidateFields.cont_photo_1, {
-    access: 'public',
-  });
-  fileNameUrl1 = blob1.url;
-  const blob2 = await put(invalidateFields.cont_photo_2.name, invalidateFields.cont_photo_2, {
-    access: 'public',
-  });
-  fileNameUrl2 = blob2.url;
-  const blob3 = await put(invalidateFields.cont_photo_3.name, invalidateFields.cont_photo_3, {
-    access: 'public',
-  });
-  fileNameUrl3 = blob3.url;
+
+
+  if (invalidateFields.cont_photo_1?.size !== undefined) {
+    console.log("fuckkkkkkkk", invalidateFields.cont_photo_1)
+    const blob1 = await put(invalidateFields.cont_photo_1?.name, invalidateFields.cont_photo_1, {
+      access: 'public',
+    });
+    fileNameUrl1 = blob1.url;
+  }
+  if (invalidateFields.cont_photo_2?.size !== undefined) {
+    const blob2 = await put(invalidateFields.cont_photo_2?.name, invalidateFields.cont_photo_2, {
+      access: 'public',
+    });
+    fileNameUrl2 = blob2.url;
+  }
+  if (invalidateFields.cont_photo_3?.size !== undefined) {
+    const blob3 = await put(invalidateFields.cont_photo_3?.name, invalidateFields.cont_photo_3, {
+      access: 'public',
+    });
+    fileNameUrl3 = blob3.url;
+  }
   try {
-      
+
     const post = {
       user_id: 'bb173bd3-cb40-47a5-8415-29655e71a334',
       breif_title: breif_title,
@@ -141,9 +155,9 @@ export async function createPost(prevState: State | undefined, formData: FormDat
       cont_3_description: invalidateFields.cont_desc_3,
       cont_3_code_snippet: invalidateFields.cont_codesnip_3,
       cont_3_photo: fileNameUrl3,
-      
 
-      
+
+
 
     }
     console.log("not posted");

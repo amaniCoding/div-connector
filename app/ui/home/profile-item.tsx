@@ -76,61 +76,86 @@ export default function ProfileItem(props: { post: QueryResultRow }) {
 
         <div className="mb-2">
           <p className="font-bold mb-2 leading-relaxed">{props.post?.cont_0_title}</p>
-          <p className="mb-2 leading-relaxed">{props.post?.cont_0_description}</p>
-          <SyntaxHighlighter style={docco}>{props.post?.cont_0_code_snippet}</SyntaxHighlighter>
-          <Image
-            alt="Amanuel Ferede"
-            src={`${props.post?.cont_0_photo}`}
-            width={0}
-            height={0}
-            sizes="100vh"
-            className="w-full object-cover"
-          />
+          <p className="mb-2 leading-relaxed whitespace-pre-wrap">{props.post?.cont_0_description}</p>
+          {
+
+            props.post?.cont_0_code_snippet && (<SyntaxHighlighter style={docco}>{props.post?.cont_0_code_snippet}</SyntaxHighlighter>)
+
+          }
+          {
+            props.post?.cont_0_photo && (<Image
+              alt="Amanuel Ferede"
+              src={`${props.post?.cont_0_photo}`}
+              width={0}
+              height={0}
+              sizes="100vh"
+              className="w-full object-cover"
+            />)
+
+          }
         </div>
 
         <div className="mb-2">
           <p className="font-bold mb-2 leading-relaxed">{props.post?.cont_1_title}</p>
-          <p className="mb-2 leading-relaxed">{props.post?.cont_1_description}</p>
-          <SyntaxHighlighter style={docco}>{props.post?.cont_1_code_snippet}</SyntaxHighlighter>
-          <Image
-            alt="Amanuel Ferede"
-            src={`${props.post?.cont_1_photo}`}
-            width={0}
-            height={0}
-            unoptimized
-            sizes="100vh"
-            className="object-cover w-full"
-          />
+          <p className="mb-2 leading-relaxed whitespace-pre-wrap">{props.post?.cont_1_description}</p>
+          {
+
+            props.post?.cont_1_code_snippet && (<SyntaxHighlighter style={docco}>{props.post?.cont_1_code_snippet}</SyntaxHighlighter>)
+
+          }
+          {
+            props.post?.cont_1_photo && (<Image
+              alt="Amanuel Ferede"
+              src={`${props.post?.cont_1_photo}`}
+              width={0}
+              height={0}
+              sizes="100vh"
+              className="w-full object-cover"
+            />)
+
+          }
         </div>
 
         <div className="mb-2">
           <p className="font-bold mb-2 leading-relaxed">{props.post?.cont_2_title}</p>
-          <p className="mb-2 leading-relaxed">{props.post?.cont_2_description}</p>
-          <SyntaxHighlighter style={docco}>{props.post?.cont_2_code_snippet}</SyntaxHighlighter>
-          <Image
-            alt="Amanuel Ferede"
-            src={`${props.post?.cont_2_photo}`}
-            width={0}
-            height={0}
-            unoptimized
-            sizes="100vh"
-            className="object-cover w-full"
-          />
+          <p className="mb-2 leading-relaxed whitespace-pre-wrap">{props.post?.cont_2_description}</p>
+          {
+
+            props.post?.cont_2_code_snippet && (<SyntaxHighlighter style={docco}>{props.post?.cont_2_code_snippet}</SyntaxHighlighter>)
+
+          }
+          {
+            props.post?.cont_2_photo && (<Image
+              alt="Amanuel Ferede"
+              src={`${props.post?.cont_2_photo}`}
+              width={0}
+              height={0}
+              sizes="100vh"
+              className="w-full object-cover"
+            />)
+
+          }
         </div>
 
         <div className="mb-2">
           <p className="font-bold mb-2 leading-relaxed">{props.post?.cont_3_title}</p>
-          <p className="mb-2 leading-relaxed">{props.post?.cont_3_description}</p>
-          <SyntaxHighlighter style={docco}>{props.post?.cont_3_code_snippet}</SyntaxHighlighter>
-          <Image
-            alt="Amanuel Ferede"
-            src={`${props.post?.cont_3_photo}`}
-            width={0}
-            height={0}
-            unoptimized
-            sizes="100vh"
-            className="object-cover w-full"
-          />
+          <p className="mb-2 leading-relaxed whitespace-pre-wrap">{props.post?.cont_3_description}</p>
+          {
+
+            props.post?.cont_3_code_snippet && (<SyntaxHighlighter style={docco}>{props.post?.cont_3_code_snippet}</SyntaxHighlighter>)
+
+          }
+          {
+            props.post?.cont_3_photo && (<Image
+              alt="Amanuel Ferede"
+              src={`${props.post?.cont_3_photo}`}
+              width={0}
+              height={0}
+              sizes="100vh"
+              className="w-full object-cover"
+            />)
+
+          }
         </div>
       </div>
     </>

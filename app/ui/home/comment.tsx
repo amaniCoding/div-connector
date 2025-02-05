@@ -29,7 +29,7 @@ export default function Comment() {
     setshowMiniProfileBox(false);
   }
   return (
-    <div className="md:p-6 p-3 md:sticky md:top-4">
+    <div className="md:p-6 p-3 md:sticky md:top-[60px] h-screen md:socrollabar md:overflow-y-auto">
 
       {
         Array.from(Array(10).keys()).map((_, i) => {
