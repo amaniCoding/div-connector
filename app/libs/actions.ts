@@ -96,21 +96,21 @@ export async function createPost(prevState: State | undefined, formData: FormDat
 
   breiffileUrl = blob.url;
 
-  const blob0 = await put(invalidateFields.breif_photo.name, invalidateFields.cont_photo_0, {
+  const blob0 = await put(invalidateFields.cont_photo_0.name, invalidateFields.cont_photo_0, {
     access: 'public',
   });
 
   fileNameUrl0 = blob0.url;
 
-  const blob1 = await put(invalidateFields.breif_photo.name, invalidateFields.cont_photo_1, {
+  const blob1 = await put(invalidateFields.cont_photo_1.name, invalidateFields.cont_photo_1, {
     access: 'public',
   });
   fileNameUrl1 = blob1.url;
-  const blob2 = await put(invalidateFields.breif_photo.name, invalidateFields.cont_photo_2, {
+  const blob2 = await put(invalidateFields.cont_photo_2.name, invalidateFields.cont_photo_2, {
     access: 'public',
   });
   fileNameUrl2 = blob2.url;
-  const blob3 = await put(invalidateFields.breif_photo.name, invalidateFields.cont_photo_3, {
+  const blob3 = await put(invalidateFields.cont_photo_3.name, invalidateFields.cont_photo_3, {
     access: 'public',
   });
   fileNameUrl3 = blob3.url;
