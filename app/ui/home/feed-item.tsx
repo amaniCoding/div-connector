@@ -2,92 +2,190 @@
 import { QueryResultRow } from "@vercel/postgres"
 import Image from "next/image"
 import Link from "next/link";
-import { useState } from "react";
-import { IoMdMore } from "react-icons/io";
+import { IoIosMore, IoMdMore } from "react-icons/io";
 import CommentItem from "./comment-item";
+import { FaFacebookMessenger, FaUserFriends } from "react-icons/fa";
 
 export default function FeedItem(props: { post: QueryResultRow }) {
 
-  const [showMiniProfileBox, setshowMiniProfileBox] = useState<boolean>(false);
 
-  const [mTimeOut, setMTimeOut] = useState<NodeJS.Timeout>();
-
-
-  const handelshowMiniProfileBox = () => {
-    setshowMiniProfileBox(true);
-  }
-
-
-  const handelhideMiniProfileBox = () => {
-    const returnedTimeOut = setTimeout(() => { setshowMiniProfileBox(false) }, 200);
-    setMTimeOut(returnedTimeOut);
-
-
-  }
-
-  const handelclearTimeOutForMiniProfileBox = () => {
-    clearTimeout(mTimeOut);
-  }
-
-  const handelOutMiniProfile = () => {
-    setshowMiniProfileBox(false);
-  }
   return (
-    <div className="py-2 bg-white rounded-md mb-4 relative">
-      <div className={`absolute -left-32 rounded-lg top-16 w-auto p-3 space-x-3 bg-white shadow-lg ${showMiniProfileBox ? 'md:flex hidden' : 'hidden'}`} onMouseMove={handelclearTimeOutForMiniProfileBox} onMouseLeave={handelOutMiniProfile}>
-        <Image
-          className="w-14 h-14 rounded-full object-center"
-          alt="Amanuel Ferede"
-          src={props.post.profile_pic}
-          width={0}
-          height={0}
-          sizes="100vh"
-        />
-        <div className=" flex-col space-y-2">
-          <p className="text-lg font-bold">{props.post.fname} {props.post.lname}</p>
-          <p className="">{props.post.current_position} at {props.post.current_city} </p>
-          <p>Lives in {props.post.current_city}</p>
-        </div>
-      </div>
+    <div className="py-2 bg-white rounded-md mb-4">
+
       <div className="flex justify-between">
         <div className="flex space-x-3 px-6 pt-2">
-          <Link href={`/profile`} onMouseEnter={handelshowMiniProfileBox} onMouseLeave={handelhideMiniProfileBox}>
+          <Link href={`/profile`}>
             <Image
               alt="Amanuel Ferede"
-              src={props.post.profile_pic}
+              src={props.post.basicinfom.profilePic}
               width={0}
               height={0}
               sizes="100vh"
               className="w-10 h-10 object-cover rounded-full ring-2 ring-offset-2 ring-blue-400"
             />
           </Link>
-          <div className="flex flex-col space-y-0.5">
-            <Link href={`/profile`} onMouseEnter={handelshowMiniProfileBox} onMouseLeave={handelhideMiniProfileBox} className="peer"><span>{props.post.fname} {props.post.lname}</span></Link>
+          <div className="flex-col space-y-0.5 inline-block relative group">
+
+            <Link href={`/profile`} className="peer block"><span className="font-semibold">{props.post.basicinfom.fName} {props.post.basicinfom.lastName}</span></Link>
+            <div className={`absolute group-hover:block hidden w-96 z-10  -left-32 rounded-lg  p-4  bg-white shadow-lg`}>
+              <div className="flex space-x-3">
+                <Image
+                  className="w-20 h-20 rounded-full  object-cover"
+                  alt="Amanuel Ferede"
+                  src={props.post.basicinfom.profilePic}
+                  width={0}
+                  height={0}
+                  sizes="100vh"
+
+                />
+
+                <div className=" flex-col space-y-2 flex-1 mt-3">
+                  <p className="text-lg font-bold">{props.post.basicinfom.fName} {props.post.basicinfom.lastName}</p>
+                  <p className="">Lives in AddisAbaba Ethiopia </p>
+                  <p>Studid Vivil Engineering at BahirDar University</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2 mt-3">
+                <button className="px-3 grow py-1.5 bg-gray-400 text-white flex space-x-2 items-center justify-center rounded-md"><FaUserFriends className="w-4 h-4" /><span>Friends</span></button>
+                <button className="px-3 grow py-1.5 bg-blue-600 text-white flex space-x-2 items-center justify-center rounded-md"><FaFacebookMessenger className="fill-white w-4 h-4" /><span>Message</span></button>
+                <button className="p-3 bg-gray-400 text-white flex space-x-2 items-center rounded-md"><IoIosMore className="w-4 h-4" /></button>
+              </div>
+
+            </div>
             <span className="text-gray-400 text-sm">2 Hours</span>
           </div>
         </div>
         <IoMdMore className="w-8 h-8" />
       </div>
+      <p className="px-3 mb-3">{props.post.post.length > 170 ? `${props.post.post.substring(0, 170)}... See more` : props.post.post}</p>
 
       <div className="my-1 p-2">
-        <p className="text-xl font-bold px-3">{props.post.breif_title}</p>
-        <p className="text-justify px-3 whitespace-pre-wrap">{props.post.breif_description} . . . {props.post.cont_0_description ? <Link href={`/post/${props.post.post_id}/`}>Read More</Link> : ""}</p>
 
-         
+        {
+          props.post.photos.length === 1 && (
+            
+              
 
+                <Image
+                  alt="Amanuel Ferede"
+                  src={props.post.photos[0]}
+                  width={0}
+                  height={0}
+                  sizes="100vh"
+                  className="w-full"
+                />
+
+        
+          )
+        }
+
+
+        {
+          props.post.photos.length === 2 && (
+            <div className="grid grid-cols-2 gap-1">
+              {props.post.photos.map((el: string, i: number) => {
+                return (
+
+                  <div key={i}>
+                    <Image
+                      alt="Amanuel Ferede"
+                      src={el}
+                      width={0}
+                      height={0}
+                      sizes="100vh"
+                      className="w-full h-full"
+                    />
+                  </div>
+
+                )
+              })}
+            </div>
+          )
+        }
+
+
+        {
+          props.post.photos.length === 3 && (
+            <div className="grid grid-cols-12 gap-1">
+              <div className="col-span-12">
+                <Image
+                  alt="Amanuel Ferede"
+                  src={props.post.photos[0]}
+                  width={0}
+                  height={0}
+                  sizes="100vh"
+                  className="w-full"
+                />
+              </div>
+
+     
+
+             
+                {props.post.photos.slice(1, 3).map((el: string, i: number) => {
+                  return (
+                    <div className="col-span-6" key={i}>
+                      <Image
+                        alt="Amanuel Ferede"
+                        src={el}
+                        width={0}
+                        height={0}
+                        sizes="100vh"
+                        className="w-full h-full"
+                        />
+                    </div>
+
+                  )
+                })}
+
+
+              </div>
+
+              
+
+           
+     
+
+
+          )}
+
+        {
+          props.post.photos.length === 4 && (
+
+            <div className="grid grid-cols-12 gap-1">
+              <div className="col-span-12">
+                <Image
+                  alt="Amanuel Ferede"
+                  src={props.post.photos[0]}
+                  width={0}
+                  height={0}
+                  sizes="100vh"
+                  className="w-full"
+                />
+              </div>
+
+              {props.post.photos.slice(1, 4).map((el: string, i: number) => {
+                return (
+                  <div key={i} className="col-span-4">
+                    <Image
+                      alt="Amanuel Ferede"
+                      src={el}
+                      width={0}
+                      height={0}
+                      sizes="100vh"
+                      className="w-full h-full"
+                    />
+                  </div>
+
+                )
+              })}
+
+
+            </div>
+          )
+        }
       </div>
-      <div className="">
 
-        <Image
-          alt="Amanuel Ferede"
-          src={`${props.post.photo}`}
-          width={0}
-          height={0}
-          unoptimized
-          sizes="100vh"
-          className="object-cover w-full"
-        />
-      </div>
       <CommentItem />
     </div>
   )

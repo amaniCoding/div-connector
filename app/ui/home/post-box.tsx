@@ -1,88 +1,68 @@
 'use client'
 
-import { Dispatch, SetStateAction, useActionState, useEffect, useState } from "react"
-import { FaXmark } from "react-icons/fa6"
-import Form from "../form"
-import { createPost, State } from "@/app/libs/actions"
+import { Dispatch, SetStateAction } from "react"
+import { FaLocationDot, FaLock, FaXmark } from "react-icons/fa6"
+import Image from "next/image"
+import { BsEmojiAstonished } from "react-icons/bs"
+import { GrGallery } from "react-icons/gr"
+import { FaUserFriends } from "react-icons/fa"
+import { HiOutlineEmojiHappy } from "react-icons/hi"
+import { PiGifFill } from "react-icons/pi"
+import { IoIosMore } from "react-icons/io"
+// import { createPost, State } from "@/app/libs/actions"
 export default function PostBox(props: {
   onClose: Dispatch<SetStateAction<boolean>>
 }) {
-  const [contentIndex, setContentIndex] = useState<number>(0);
-  const [toShowBreifContent, setTtoShowBreifContent] = useState<boolean>(true);
-  const [formArray, setFormArray] = useState<any[]>([]);
-
-  const [toShowBox, settoShowBox] = useState<boolean>(false);
-  const initialState: State = { message: null, errors: {}, success: false };
-  const [state, formAction, pending] = useActionState(createPost, initialState);
-
-  const handelContent = () => {
-    if (formArray.length >= 4) {
-      settoShowBox(true);
-    } else {
-      const newFormObject = {
-        [`cont_title_${contentIndex}}`]: `cont_title_${contentIndex}`,
-        [`cont_desc_${contentIndex}`]: `cont_desc_${contentIndex}`,
-        [`cont_codesnip_${contentIndex}`]: `cont_codesnip_${contentIndex}`,
-        [`cont_photo_${contentIndex}`]: `cont_photo_${contentIndex}`
-      }
-
-      const newFormArray = [...formArray, <Form formContent={newFormObject} key={contentIndex} index={contentIndex} />]
-      setFormArray(newFormArray);
-      const newContentIndex = contentIndex + 1;
-      setContentIndex(newContentIndex);
-      setTtoShowBreifContent(false);
-    }
-  }
-  useEffect(() => {
-    if (state?.success) {
-      props.onClose(false);
-    }
-  }, [state?.success])
+  // 
 
   return (
     <>
-      {
-        toShowBox && (<section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-30 overflow-hidden">
-          <div className="max-w-screen-sm rounded-md p-6 mx-auto bg-white mt-32">
-            <p className="my-2">Your content can not be more than 4</p>
-            <button className="px-2 py-1 bg-blue-500 text-white rounded-md" onClick={() => { settoShowBox(false) }}>Ok</button>
+
+      <section className="bg-gray-200/50 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
+        <div className="max-w-[515px] mx-auto rounded-xl z-30 bg-white mt-28">
+          <div className="p-3 border-b pb-2 border-b-gray-200 flex items-center justify-between">
+            <p className=""></p>
+            <p className="font-bold text-xl">Create Post</p>
+            <FaXmark className="w-10 h-10 p-2 hover:bg-gray-50 bg-gray-100 rounded-full cursor-pointer" onClick={() => { props.onClose(false) }} />
           </div>
-        </section>)
-      }
-      <section className="bg-black/75 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
-        <div className="max-w-screen-sm rounded-md p-6 mx-auto overflow-y-scroll socrollabar scroll_content bg-white relative h-[80vh] mt-10">
-          <FaXmark className="w-10 h-10 absolute top-2 right-2 p-2 hover:bg-slate-300 rounded-full cursor-pointer" onClick={() => { props.onClose(false) }} />
-          <p className="font-bold my-1">Your content count {contentIndex === 0 ? "" : contentIndex}</p>
-          <form className="flex flex-col space-y-3" action={formAction}>
-            <div className={`flex-col space-y-6 border-b-2 border-b-gray-100 pb-3 mb-3 ${toShowBreifContent ? 'flex' : 'hidden'}`}>
-              <div>
+          <form className="p-3">
 
-                <p className="text-sm">Add breif content for your post, these are the contents which are shown to the feed.</p>
+            <div className="flex space-x-3">
+              <Image
+                alt="Amanuel Ferede"
+                src={`/feeds/logo.jpg`}
+                width={0}
+                height={0}
+                sizes="100vh"
+                className="w-10 h-10 object-center rounded-full border-2 border-blue-700"
+              />
+
+              <div className="flex flex-col">
+                <p>Amanuel Ferede</p>
+                <button className="py-[0.5px] rounded-lg bg-gray-200 flex items-center justify-center space-x-1"><FaLock className="w-3 h-3" /><span>Only me</span></button>
               </div>
-              <input type="text" placeholder="Title ..." className="p-3 focus:outline-none border-[2px] border-gray-300 rounded-lg" name="breif_title"></input>
-              <textarea className="p-3 rounded-lg focus:outline-none border-[2px] border-gray-300" rows={5} placeholder="Description ..." name="breif_description"></textarea>
-              <input type="file" className="p-3 file:border-0" name="breif_photo"></input>
-
             </div>
 
-            <div>
-              {
-                !toShowBreifContent && (<div>
+            <textarea placeholder="What's in your mind, Amanuel" className="placeholder:text-gray-500 placeholder:text-2xl w-full text-3xl block outline-none border-none overflow-y-auto socrollabar resize-none" rows={4}>
 
-                  <p className="text-sm">Add sections for your content for your post, these are the full article which a user read when clicking read more</p>
-                </div>)
-              }
-              {
-                !toShowBreifContent && formArray.map((form, i) => {
-                  return (<div key={i}>{form}</div>)
-                })
-              }
+            </textarea>
+            <div className="flex items-center justify-between my-4">
+              <div className="w-8 h-8 bg-gradient-to-bl rounded-lg  from-yellow-400 to-green-500"></div>
+              <BsEmojiAstonished className="w-7 h-7 fill-gray-600 " />
             </div>
-            <div className="flex items-center justify-between">
-              <button type="button" onClick={handelContent} className="px-3 py-2 bg-blue-500 text-white rounded-md text-center w-36">Add Section</button>
 
-              {!toShowBreifContent && <button type="submit" className="px-3 py-2 bg-blue-500 text-white rounded-md text-center w-36">{pending ? "Posting..." : "Post"}</button>}
+            <div className="mb-4 p-3 border border-gray-400 rounded-lg flex items-center justify-between">
+              <p>Add to your post</p>
+              <div className="flex items-center space-x-4">
+                <GrGallery className="w-7 h-7 text-green-600" />
+                <FaUserFriends className="w-7 h-7 fill-blue-600" />
+                <HiOutlineEmojiHappy className="w-7 h-7 text-yellow-600" />
+                <FaLocationDot className="w-7 h-7 fill-red-600" />
+                <PiGifFill className="w-7 h-7 fill-green-600" />
+                <IoIosMore  className="w-7 h-7 fill-gray-600" />
+              </div>
             </div>
+            <button className="w-full text-center py-2 bg-blue-600 text-white rounded-md">Post</button>
           </form>
         </div>
       </section>

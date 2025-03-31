@@ -1,33 +1,24 @@
 import { db } from "@vercel/postgres";
-import bcrypt from 'bcrypt';
-import { users } from "../libs/place-holder";
+import bcrypt from 'bcryptjs';
+import { userPosts, users } from "../libs/place-holder";
 const client = await db.connect();
 
 async function seedUsers() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await client.sql`
     CREATE TABLE IF NOT EXISTS users (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      fname VARCHAR(255) NOT NULL,
-      lname VARCHAR(255) NOT NULL,
-      email TEXT NOT NULL UNIQUE,
-      password TEXT NOT NULL,
-      profile_pic TEXT,
-      cover_pic TEXT,
-      phone_number TEXT,
-      skills JSONB,
-      social_media_links JSONB,
-      work_exp JSONB,
-      current_city TEXT,
-      current_position TEXT,
-      about TEXT
+      userid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      password VARCHAR(255) NOT NULL,
+      basicInfom JSONB,
+      contactInfo JSONB,
+      profile JSONB
     );
   `;
 
   const insertedUsers = await Promise.all(
     users.map(async (user) => {
       const hashedPassword = await bcrypt.hash(user.password, 10);
-      return client.sql`INSERT INTO users (fname, lname, email, password, profile_pic, cover_pic, phone_number, skills, social_media_links, work_exp, current_city, current_position, about) VALUES (${user.fname}, ${user.lname}, ${user.email}, ${hashedPassword}, ${user.profile_pic}, ${user.cover_pic}, ${user.phone_number}, ${user.skills}, ${user.social_media_links}, ${user.work_exp}, ${user.current_city}, ${user.current_position}, ${user.about}) ON CONFLICT (id) DO NOTHING;
+      return client.sql`INSERT INTO users (password, basicInfom, contactInfo, profile) VALUES (${hashedPassword}, ${JSON.stringify(user.basicInfom)}, ${JSON.stringify(user.contactInfo)}, ${JSON.stringify(user.profile)}) ON CONFLICT (userId) DO NOTHING;
       `;
     })
   );
@@ -35,12 +26,38 @@ async function seedUsers() {
   return insertedUsers;
 }
 
+async function seedUserPosts() {
+  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS userposts (
+      userpostid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      posttype TEXT NOT NULL,
+      userid UUID NOT NULL,
+      post TEXT NOT NULL,
+      photos JSONB,
+      video TEXT,
+      date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
+  const insertedUserPosts = await Promise.all(
+    userPosts.map(async (post) => {
+     
+      return client.sql`INSERT INTO userposts (posttype, userid, post, photos) VALUES (${post.postType}, ${post.userId}, ${post.post}, ${JSON.stringify(post.photos)}) ON CONFLICT (userpostid) DO NOTHING;
+      `;
+    })
+  );
+
+  return insertedUserPosts;
+}
+
+
 
 export async function GET() {
   try {
     await client.sql`BEGIN`;
     //await seedUsers();
-    //await seedPost();
+    await seedUserPosts();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
