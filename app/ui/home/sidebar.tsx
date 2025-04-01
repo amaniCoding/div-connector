@@ -1,8 +1,13 @@
 'use client'
 import { useState } from "react";
-import { FaBusinessTime } from "react-icons/fa6";
-import { GrTechnology } from "react-icons/gr";
-import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
+import { BiCalendarEvent } from "react-icons/bi";
+import { FaBirthdayCake, FaUserFriends } from "react-icons/fa";
+import {  FaFacebookMessenger, FaGamepad } from "react-icons/fa6";
+import { IoSaveSharp } from "react-icons/io5";
+import { MdFeed, MdGroups, MdPayments } from "react-icons/md";
+import { PiFilmReelFill, PiVideoFill } from "react-icons/pi";
+import { RiPagesFill } from "react-icons/ri";
+import { SiCodeclimate, SiFacebookgaming, SiGooglemarketingplatform } from "react-icons/si";
 export default function SideBar() {
     const [showScrollBar, setShowScrollBar] = useState(false);
     return (
@@ -10,66 +15,71 @@ export default function SideBar() {
 
               <div className={`w-3/4 h-full overflow-y-scroll  pt-10 pl-3 ${showScrollBar ? 'socrollabar' : 'socrollabar-hidden'}`} onMouseOver={() => setShowScrollBar(true)} onMouseOut={() => setShowScrollBar(false)}>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineLiveTv className="w-6 h-6" />
-                  <span>Vidoes</span>
+                  <FaUserFriends className="w-6 h-6 fill-blue-600" />
+                  <span>Freinds</span>
                 </div>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <FaBusinessTime className="w-6 h-6" />
-                  <span>Jobs</span>
-                </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdEventNote className="w-6 h-6" />
-                  <span>Events</span>
-                </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <GrTechnology className="w-6 h-6" />
-                  <span>Tech Companies</span>
-                </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineAppShortcut className="w-6 h-6" />
-                  <span>Shorts</span>
+                  <MdGroups className="w-6 h-6 fill-blue-600" />
+                  <span>Groups</span>
                 </div>
 
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineLiveTv className="w-6 h-6" />
-                  <span>Vidoes</span>
+                  <RiPagesFill  className="w-6 h-6 fill-pink-600" />
+                  <span>Pages</span>
                 </div>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <FaBusinessTime className="w-6 h-6" />
-                  <span>Jobs</span>
+                  <PiVideoFill className="w-6 h-6 fill-blue-600" />
+                  <span>Videos</span>
                 </div>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdEventNote className="w-6 h-6" />
+                  <IoSaveSharp className="w-6 h-6 fill-pink-600" />
+                  <span>Saved</span>
+                </div>
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <PiFilmReelFill className="w-6 h-6 fill-pink-600" />
+                  <span>Reels</span>
+                </div>
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <FaFacebookMessenger  className="w-6 h-6 fill-blue-600" />
+                  <span>Messenger</span>
+                </div>
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <MdFeed className="w-6 h-6 fill-pink-600" />
+                  <span>Feeds</span>
+                </div>
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <BiCalendarEvent className="w-6 h-6 fill-blue-600" />
                   <span>Events</span>
                 </div>
+
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <GrTechnology className="w-6 h-6" />
-                  <span>Tech Companies</span>
+                  <FaBirthdayCake className="w-6 h-6 fill-blue-600" />
+                  <span>Birthdays</span>
+                </div>
+
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <SiCodeclimate  className="w-6 h-6 fill-blue-600" />
+                  <span>Climate sicence center</span>
                 </div>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineAppShortcut className="w-6 h-6" />
-                  <span>Shorts</span>
+                  <FaGamepad className="w-6 h-6 fill-blue-600" />
+                  <span>Play Games</span>
+                </div>
+
+                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
+                  <SiFacebookgaming  className="w-6 h-6 fill-pink-600" />
+                  <span>Gaming Videos</span>
                 </div>
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <GrTechnology className="w-6 h-6" />
-                  <span>Tech Companies</span>
+                  <MdPayments  className="w-6 h-6 fill-blue-600" />
+                  <span>Orders and payments</span>
                 </div>
+
                 <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineAppShortcut className="w-6 h-6" />
-                  <span>Shorts</span>
+                  <SiGooglemarketingplatform   className="w-6 h-6 fill-blue-600" />
+                  <span>Market Place</span>
                 </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineAppShortcut className="w-6 h-6" />
-                  <span>Shorts</span>
-                </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <GrTechnology className="w-6 h-6" />
-                  <span>Tech Companies</span>
-                </div>
-                <div className="p-2 flex items-center mb-1 space-x-2 hover:bg-gray-200 rounded-l-md rounded-b-md cursor-pointer w-full">
-                  <MdOutlineAppShortcut className="w-6 h-6" />
-                  <span>Shorts</span>
-                </div>
+                
               </div>
 
             </div>

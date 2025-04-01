@@ -18,8 +18,8 @@ export default function PostBox(props: {
   return (
     <>
 
-      <section className="bg-gray-200/50 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
-        <div className="max-w-[515px] mx-auto rounded-xl z-30 bg-white mt-28">
+      <section className="bg-gray-100/70 fixed top-0 bottom-0 left-0 right-0 z-20 overflow-hidden">
+        <div className="max-w-[515px] mx-auto shadow-gray-400 shadow-lg rounded-xl z-30 bg-white mt-28">
           <div className="p-3 border-b pb-2 border-b-gray-200 flex items-center justify-between">
             <p className=""></p>
             <p className="font-bold text-xl">Create Post</p>
@@ -51,18 +51,18 @@ export default function PostBox(props: {
               <BsEmojiAstonished className="w-7 h-7 fill-gray-600 " />
             </div>
 
-            <div className="mb-4 p-3 border border-gray-400 rounded-lg flex items-center justify-between">
+            <div className="mb-4 p-3 border border-gray-300 rounded-lg flex items-center justify-between">
               <p>Add to your post</p>
               <div className="flex items-center space-x-4">
-                <GrGallery className="w-7 h-7 text-green-600" />
-                <FaUserFriends className="w-7 h-7 fill-blue-600" />
-                <HiOutlineEmojiHappy className="w-7 h-7 text-yellow-600" />
-                <FaLocationDot className="w-7 h-7 fill-red-600" />
-                <PiGifFill className="w-7 h-7 fill-green-600" />
-                <IoIosMore  className="w-7 h-7 fill-gray-600" />
+                <GrGallery className="w-6 h-6 text-green-600" />
+                <FaUserFriends className="w-6 h-6 fill-blue-600" />
+                <HiOutlineEmojiHappy className="w-6 h-6 text-yellow-600" />
+                <FaLocationDot className="w-6 h-6 fill-red-600" />
+                <PiGifFill className="w-6 h-6 fill-green-600" />
+                <IoIosMore  className="w-6 h-6 fill-gray-600" />
               </div>
             </div>
-            <button className="w-full text-center py-2 bg-blue-600 text-white rounded-md">Post</button>
+            <button className="w-full text-center py-2 bg-gray-300 text-white rounded-md">Post</button>
           </form>
         </div>
       </section>
