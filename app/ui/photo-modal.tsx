@@ -89,7 +89,7 @@ export default function PhotoModal() {
                     {
                         Array.from(Array(10).keys()).map((_, i) => {
                             return (
-                                <div className="flex mb-3 space-x-3">
+                                <div className="flex mb-3 space-x-3" key={i}>
                                     <Image
                                         alt="Amanuel Ferede"
                                         src={`/feeds/${i + 1}.jpg`}
