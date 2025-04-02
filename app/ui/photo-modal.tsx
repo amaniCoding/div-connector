@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 
@@ -15,8 +16,8 @@ export default function PhotoModal() {
     const router = useRouter();
 
     const toHome = () => {
-        router.replace('/home', {scroll: false});
-        
+        router.replace('/home', { scroll: false });
+
     }
     return (
         <div className="grid grid-cols-12 gap-3 h-screen">
@@ -24,9 +25,10 @@ export default function PhotoModal() {
                 <div className="w-full h-screen sticky left-0 bottom-0 top-0 z-20 lg:px-4 lg:bg-black">
 
 
-                    <FaXmark className="w-9 fill-blue-600 text-white h-9 cursor-pointer absolute left-6 top-3" onClick={() => {
-                        toHome()
-                    }} />
+                    <Link href={`/home`} legacyBehavior scroll={false} shallow={true} className="w-9 h-9 cursor-pointer absolute left-6 top-3">
+
+                        <FaXmark className="w-full h-full fill-white" />
+                    </Link>
 
                     <Image
                         alt="Amanuel Ferede"
