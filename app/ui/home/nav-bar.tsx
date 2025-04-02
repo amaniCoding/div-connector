@@ -48,9 +48,9 @@ export default function NavBar() {
           
         </div>
         <div className="flex items-center space-x-3">
-          <BiSolidGrid  className="w-[26px] h-[26px]" />
-          <FaFacebookMessenger className="w-[26px] h-[26px]" />
-          <IoNotificationsSharp  className="w-[26px] h-[26px]" />
+          <BiSolidGrid  className="w-10 h-10 p-2 fill-black bg-gray-200 rounded-full" />
+          <FaFacebookMessenger className="w-10 h-10 fill-black p-2 bg-gray-200 rounded-full" />
+          <IoNotificationsSharp  className="w-10 h-10 fill-black p-2 bg-gray-200 rounded-full" />
 
           <Image
             alt="Amanuel Ferede"

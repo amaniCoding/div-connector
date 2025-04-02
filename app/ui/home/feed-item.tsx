@@ -64,19 +64,21 @@ export default function FeedItem(props: { post: QueryResultRow }) {
 
         {
           props.post.photos.length === 1 && (
-            
-              
 
-                <Image
-                  alt="Amanuel Ferede"
-                  src={props.post.photos[0]}
-                  width={0}
-                  height={0}
-                  sizes="100vh"
-                  className="w-full"
-                />
+            <Link href={`/photo/2308409238042834`}>
+              <Image
+                alt="Amanuel Ferede"
+                src={props.post.photos[0]}
+                width={0}
+                height={0}
+                sizes="100vh"
+                className="w-full"
+              />
+            </Link>
 
-        
+
+
+
           )
         }
 
@@ -88,14 +90,17 @@ export default function FeedItem(props: { post: QueryResultRow }) {
                 return (
 
                   <div key={i}>
-                    <Image
-                      alt="Amanuel Ferede"
-                      src={el}
-                      width={0}
-                      height={0}
-                      sizes="100vh"
-                      className="w-full h-full"
-                    />
+                    <Link href={`/photo/2308409238042834`}>
+
+                      <Image
+                        alt="Amanuel Ferede"
+                        src={el}
+                        width={0}
+                        height={0}
+                        sizes="100vh"
+                        className="w-full h-full"
+                      />
+                    </Link>
                   </div>
 
                 )
@@ -109,22 +114,27 @@ export default function FeedItem(props: { post: QueryResultRow }) {
           props.post.photos.length === 3 && (
             <div className="grid grid-cols-12 gap-1">
               <div className="col-span-12">
-                <Image
-                  alt="Amanuel Ferede"
-                  src={props.post.photos[0]}
-                  width={0}
-                  height={0}
-                  sizes="100vh"
-                  className="w-full"
-                />
+                <Link href={`/photo/2308409238042834`}>
+
+                  <Image
+                    alt="Amanuel Ferede"
+                    src={props.post.photos[0]}
+                    width={0}
+                    height={0}
+                    sizes="100vh"
+                    className="w-full"
+                  />
+                </Link>
               </div>
 
-     
 
-             
-                {props.post.photos.slice(1, 3).map((el: string, i: number) => {
-                  return (
-                    <div className="col-span-6" key={i}>
+
+
+              {props.post.photos.slice(1, 3).map((el: string, i: number) => {
+                return (
+                  <div className="col-span-6" key={i}>
+                    <Link href={`/photo/2308409238042834`}>
+
                       <Image
                         alt="Amanuel Ferede"
                         src={el}
@@ -132,19 +142,20 @@ export default function FeedItem(props: { post: QueryResultRow }) {
                         height={0}
                         sizes="100vh"
                         className="w-full h-full"
-                        />
-                    </div>
+                      />
+                    </Link>
+                  </div>
 
-                  )
-                })}
+                )
+              })}
 
 
-              </div>
+            </div>
 
-              
 
-           
-     
+
+
+
 
 
           )}
@@ -154,27 +165,33 @@ export default function FeedItem(props: { post: QueryResultRow }) {
 
             <div className="grid grid-cols-12 gap-1">
               <div className="col-span-12">
-                <Image
-                  alt="Amanuel Ferede"
-                  src={props.post.photos[0]}
-                  width={0}
-                  height={0}
-                  sizes="100vh"
-                  className="w-full"
-                />
+                <Link href={`/photo/2308409238042834`}>
+
+                  <Image
+                    alt="Amanuel Ferede"
+                    src={props.post.photos[0]}
+                    width={0}
+                    height={0}
+                    sizes="100vh"
+                    className="w-full"
+                  />
+                </Link>
               </div>
 
               {props.post.photos.slice(1, 4).map((el: string, i: number) => {
                 return (
                   <div key={i} className="col-span-4">
-                    <Image
-                      alt="Amanuel Ferede"
-                      src={el}
-                      width={0}
-                      height={0}
-                      sizes="100vh"
-                      className="w-full h-full"
-                    />
+                    <Link href={`/photo/2308409238042834`}>
+
+                      <Image
+                        alt="Amanuel Ferede"
+                        src={el}
+                        width={0}
+                        height={0}
+                        sizes="100vh"
+                        className="w-full h-full"
+                      />
+                    </Link>
                   </div>
 
                 )
