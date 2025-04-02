@@ -2,9 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
-
 
 import { FaRegComment, FaXmark } from "react-icons/fa6";
 import { IoMdMore, IoMdThumbsUp } from "react-icons/io";
@@ -13,12 +10,9 @@ import { PiShareFat, PiThumbsUp } from "react-icons/pi";
 export default function PhotoModal() {
 
 
-    const router = useRouter();
 
-    const toHome = () => {
-        router.replace('/home', { scroll: false });
 
-    }
+   
     return (
         <div className="grid grid-cols-12 gap-3 h-screen">
             <div className="lg:col-span-9 col-span-12 relative">
