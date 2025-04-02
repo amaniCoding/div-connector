@@ -15,7 +15,7 @@ export default function PhotoModal() {
     const router = useRouter();
 
     const toHome = () => {
-        router.push('/home', {scroll: false});
+        router.replace('/home', {scroll: false});
         
     }
     return (
