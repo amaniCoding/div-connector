@@ -16,10 +16,10 @@ export default function PhotoModal(props: { photo: QueryResultRow, photos: Query
         return photo.photoid === props.photo[0].photoid
     });
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(currentPhotoIndexFromProp);
-
+    console.log(currentPhotoIndex);
     const showNextPhoto = () => {
         if (currentPhotoIndex > props.photos.length - 1) {
-            return;
+            setCurrentPhotoIndex(0);
         } else {
             const newIndex = currentPhotoIndex + 1;
             setCurrentPhotoIndex(newIndex);
@@ -29,7 +29,7 @@ export default function PhotoModal(props: { photo: QueryResultRow, photos: Query
 
     const showPreviousPhoto = () => {
         if (currentPhotoIndex < 0) {
-            return;
+            setCurrentPhotoIndex(props.photos.length - 1);
         } else {
             const newIndex = currentPhotoIndex - 1;
             setCurrentPhotoIndex(newIndex);
@@ -38,9 +38,12 @@ export default function PhotoModal(props: { photo: QueryResultRow, photos: Query
 
     const showExactPhoto = () => {
         if (currentPhotoIndex > props.photos.length - 1) {
+            
             return props.photos[0].photo;
         } else if (currentPhotoIndex < 0) {
+            
             return props.photos[props.photos.length - 1].photo;
+            
         } else {
             return props.photos[currentPhotoIndex].photo;
         }

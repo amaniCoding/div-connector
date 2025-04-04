@@ -7,10 +7,10 @@ export default function Login() {
       <div className="max-w-full">
         <div className="grid lg:grid-cols-2 grid-cols-1">
          <div className="flex items-center justify-center">
-         <div className="lg:block hidden w-3/4 h-3/4">
+         <div className="lg:block hidden w-full h-full">
             <Image
               alt="Amanuel Ferede"
-              src={`/feeds/logo.jpg`}
+              src={`/feeds/max-removebg-preview.png`}
               width={0}
               height={0}
               sizes="100vh"
