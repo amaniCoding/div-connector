@@ -8,7 +8,7 @@ import { MdFeed, MdGroups, MdPayments } from "react-icons/md";
 import { PiFilmReelFill, PiVideoFill } from "react-icons/pi";
 import { RiPagesFill } from "react-icons/ri";
 import { SiCodeclimate, SiFacebookgaming, SiGooglemarketingplatform } from "react-icons/si";
-export default function SideBar() {
+export default function SideSection() {
     const [showScrollBar, setShowScrollBar] = useState(false);
     return (
         <div className="w-[30%] md:flex hidden pt-12 flex-col space-y-5  fixed left-0 bottom-0 top-0 ">

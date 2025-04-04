@@ -1,5 +1,5 @@
 
-import { fetchPosts } from "@/app/libs/data"
+import { fetchPosts } from "@/app/libs/data/user"
 import FeedItem from "./feed-item"
 
 
@@ -12,7 +12,7 @@ export default async function Feeds() {
       {
         posts.map((post) => {
           return ( 
-            <FeedItem post={post} key={post.userpostid}/>
+            <FeedItem post={post} key={post.postid}/>
           )
         })
       }

@@ -1,4 +1,4 @@
-import NavBar from "@/app/ui/home/nav-bar";
+import NavBar from "@/app/ui/home/sections/nav-bar";
 
 export default function Loading() {
   return (

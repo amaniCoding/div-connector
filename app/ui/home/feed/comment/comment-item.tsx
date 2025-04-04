@@ -18,7 +18,7 @@ export default function CommentItem() {
     <>
       {toShowCommentBox && <CommentBox onClose={setToShowCommentBox} />}
 
-      <div className="flex items-center px-3 justify-between">
+      <div className="flex items-center px-3 justify-between border-b py-2 border-t-gray-300">
         <div className="flex items-center space-x">
           <div className="flex -space-x-1">
             <IoMdThumbsUp className="w-6 h-6 fill-blue-500" />
@@ -42,17 +42,17 @@ export default function CommentItem() {
         </div>
 
       </div>
-      <div className="flex items-center justify-between mt-2 px-2 border-t border-t-gray-300 p-1">
-        <div className="flex items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer">
+      <div className="flex items-center justify-between px-2 py-1">
+        <div className="flex items-center space-x-2 grow justify-center hover:bg-slate-50 px-3 py-1 rounded-md cursor-pointer">
           <PiThumbsUp className="w-6 h-6" />
           <span>Like</span>
         </div>
-        <div className="flex items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer" onClick={handelShowCommentBox}>
+        <div className="flex items-center space-x-2 grow justify-center hover:bg-slate-50 px-3 py-1 rounded-md cursor-pointer" onClick={handelShowCommentBox}>
           <FaRegComment className="w-6 h-6" />
           <span>Comment</span>
         </div>
 
-        <div className="flex items-center space-x-3 hover:bg-slate-50 p-3 rounded-md cursor-pointer">
+        <div className="flex items-center space-x-2 grow justify-center hover:bg-slate-50 px-3 py-1 rounded-md cursor-pointer">
           <PiShareFat className="w-6 h-6" />
           <span>Share</span>
         </div>

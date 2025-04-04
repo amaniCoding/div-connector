@@ -1,11 +1,11 @@
-import NavBar from "@/app/ui/home/nav-bar";
+import NavBar from "@/app/ui/home/sections/nav-bar";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { FaBusinessTime } from "react-icons/fa6";
 import { GrTechnology } from "react-icons/gr";
 import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
 import FeedItem from "../ui/home/feed-items";
-import AddPost from "../ui/home/add-post";
+import AddPost from "../ui/home/feed/add-post";
 import Link from "next/link";
 export const metadata: Metadata = {
   title: "Amanuel Ferede",

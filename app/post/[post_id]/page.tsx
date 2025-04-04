@@ -1,7 +1,7 @@
-import { fetchAPost } from "@/app/libs/data";
-import Comment from "@/app/ui/home/comment";
-import NavBar from "@/app/ui/home/nav-bar";
-import ProfileItem from "@/app/ui/home/profile-item";
+import { fetchAPost } from "@/app/libs/data/user";
+import Comment from "@/app/ui/home/feed/comment/comment";
+import NavBar from "@/app/ui/home/sections/nav-bar";
+import ProfileItem from "@/app/ui/home/profile/profile-item";
 
 export default async function Page(props: { params: Promise<{ post_id: string }> }) {
 

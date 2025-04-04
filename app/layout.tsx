@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dev-Connector",
+  title: "Fakebook",
   description: "Created by Amanuel Ferede",
 };
 

@@ -1,32 +1,71 @@
 'use client'
 
+import { QueryResultRow } from "@vercel/postgres";
 import Image from "next/image"
 import Link from "next/link";
+import { useState } from "react";
 
 import { FaRegComment, FaXmark } from "react-icons/fa6";
+import { GrNext, GrPrevious } from "react-icons/gr";
 import { IoMdMore, IoMdThumbsUp } from "react-icons/io";
 import { IoHeartCircle } from "react-icons/io5";
+
 import { PiShareFat, PiThumbsUp } from "react-icons/pi";
-export default function PhotoModal() {
+export default function PhotoModal(props: { photo: QueryResultRow, photos: QueryResultRow[] }) {
+    const currentPhotoIndexFromProp = props.photos.findIndex(photo => {
+        return photo.photoid === props.photo[0].photoid
+    });
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(currentPhotoIndexFromProp);
+    console.log(currentPhotoIndex);
+
+    const showNextPhoto = () => {
+        const newIndex = currentPhotoIndex + 1;
+        setCurrentPhotoIndex(newIndex);
+    }
 
 
+    const showPreviousPhoto = () => {
+        const newIndex = currentPhotoIndex - 1;
+        setCurrentPhotoIndex(newIndex);
+    }
 
-
-   
+    const showExactPhoto = () => {
+        if(currentPhotoIndex > props.photos.length - 1) {
+            return props.photos[0].photo;
+        } else if(currentPhotoIndex < 0) {
+            return props.photos[props.photos.length - 1].photo;
+        } else {
+            return props.photos[currentPhotoIndex].photo;
+        }
+    }
     return (
         <div className="grid grid-cols-12 gap-3 h-screen">
             <div className="lg:col-span-9 col-span-12 relative">
-                <div className="w-full h-screen sticky left-0 bottom-0 top-0 z-20 lg:px-4 lg:bg-black">
+                <div className="w-full h-screen lg:sticky lg:left-0 lg:right-0 lg:bottom-3 lg:top-0 lg:z-20 px-4 bg-black">
 
 
-                    <Link href={`/home`} legacyBehavior scroll={false} shallow={true} className="w-9 h-9 cursor-pointer absolute left-6 top-3">
+                    <Link href={`/`} scroll={false} className=" cursor-pointer absolute left-6 top-3">
 
-                        <FaXmark className="w-full h-full fill-white" />
+                        <FaXmark className="w-9 h-9 fill-white" />
                     </Link>
+                    {
+                        props.photos.length > 1 && (
+                            <GrPrevious onClick={showPreviousPhoto} className="absolute cursor-pointer top-1/2 p-3 translate-y-1/2 left-8 w-12 h-12 rounded-full bg-white hover:bg-white/70" />
+                        )
+                    }
+
+                    {
+                        props.photos.length > 1 && (
+                            <GrNext onClick={showNextPhoto} className="absolute cursor-pointer top-1/2 p-3 translate-y-1/2 right-8 w-12 h-12 rounded-full bg-white hover:bg-white/70" />
+                        )
+                    }
+
+
+
 
                     <Image
                         alt="Amanuel Ferede"
-                        src={`/feeds/3.jpg`}
+                        src={showExactPhoto()}
                         width={0}
                         height={0}
                         sizes="100vh"
