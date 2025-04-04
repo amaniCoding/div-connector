@@ -4,9 +4,9 @@ import Image from "next/image";
 import { FaBusinessTime } from "react-icons/fa6";
 import { GrTechnology } from "react-icons/gr";
 import { MdEventNote, MdOutlineAppShortcut, MdOutlineLiveTv } from "react-icons/md";
-import FeedItem from "../ui/home/feed-items";
 import AddPost from "../ui/home/feed/add-post";
 import Link from "next/link";
+import FeedItems from "../ui/home/feed/feed-items";
 export const metadata: Metadata = {
   title: "Amanuel Ferede",
 };
@@ -105,7 +105,7 @@ export default function RootLayout({
               </div>
               <div className="md:w-[60%] w-full rounded-lg">
                 <AddPost />
-                <FeedItem />
+                <FeedItems />
                 {children}
               </div>
             </div>
