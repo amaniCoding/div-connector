@@ -16,23 +16,30 @@ export default function PhotoModal(props: { photo: QueryResultRow, photos: Query
         return photo.photoid === props.photo[0].photoid
     });
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(currentPhotoIndexFromProp);
-    console.log(currentPhotoIndex);
 
     const showNextPhoto = () => {
-        const newIndex = currentPhotoIndex + 1;
-        setCurrentPhotoIndex(newIndex);
+        if (currentPhotoIndex > props.photos.length - 1) {
+            return;
+        } else {
+            const newIndex = currentPhotoIndex + 1;
+            setCurrentPhotoIndex(newIndex);
+        }
     }
 
 
     const showPreviousPhoto = () => {
-        const newIndex = currentPhotoIndex - 1;
-        setCurrentPhotoIndex(newIndex);
+        if (currentPhotoIndex < 0) {
+            return;
+        } else {
+            const newIndex = currentPhotoIndex - 1;
+            setCurrentPhotoIndex(newIndex);
+        }
     }
 
     const showExactPhoto = () => {
-        if(currentPhotoIndex > props.photos.length - 1) {
+        if (currentPhotoIndex > props.photos.length - 1) {
             return props.photos[0].photo;
-        } else if(currentPhotoIndex < 0) {
+        } else if (currentPhotoIndex < 0) {
             return props.photos[props.photos.length - 1].photo;
         } else {
             return props.photos[currentPhotoIndex].photo;
