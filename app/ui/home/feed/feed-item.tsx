@@ -114,27 +114,30 @@ export default async function FeedItem(props: { post: QueryResultRow }) {
 
         {
           photos.length === 2 && (
-            <div className="grid grid-cols-2">
-              {
-                photos.map(photo => {
-                  return (
-                    <div key={photo.photoid}>
-                      <Link href={`/photo/${props.post.postid}/${photo.photoid}`}>
-                        <Image
-                          className="w-full h-full"
-                          alt="Amanuel Ferede"
-                          src={photo.photo}
-                          width={0}
-                          height={0}
-                          sizes="100vh"
+            <div className="h-[31rem] bg-yellow-200 w-full">
+              <div className="flex w-full h-full space-x-1 ">
 
-                        />
+                {
+                  photos.map(photo => {
+                    return (
+
+                      <Link key={photo.photoid} className={`w-1/2 h-full`} style={{
+                        backgroundImage: "url(" + `${photo.photo}` + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
+
                       </Link>
 
-                    </div>
-                  )
-                })
-              }
+
+                    )
+                  })
+                }
+
+
+
+              </div>
             </div>
           )
         }
@@ -142,43 +145,48 @@ export default async function FeedItem(props: { post: QueryResultRow }) {
 
         {
           photos.length === 3 && (
-            <div>
-              <div>
-                <Link href={`/photo/${props.post.postid}/${photos[0].photoid}`}>
-                  <Image
-                    className="w-full h-full"
-                    alt="Amanuel Ferede"
-                    src={photos[0].photo}
-                    width={0}
-                    height={0}
-                    sizes="100vh"
 
-                  />
-                </Link>
-              </div>
-              <div className="grid grid-cols-2">
+
+            <div className="h-[31rem] w-full flex space-x-1">
+
+              <div className="flex flex-col w-1/2 h-full space-y-1">
+
                 {
-                  photos.slice(1, 3).map(photo => {
+                  photos.slice(0, 2).map(photo => {
                     return (
-                      <div key={photo.photoid}>
-                        <Link href={`/photo/${props.post.postid}/${photo.photoid}`}>
-                          <Image
-                            className="w-full h-full"
-                            alt="Amanuel Ferede"
-                            src={photo.photo}
-                            width={0}
-                            height={0}
-                            sizes="100vh"
 
-                          />
-                        </Link>
+                      <Link key={photo.photoid} className={`w-full h-[15.5rem]`} style={{
+                        backgroundImage: "url(" + `${photo.photo}` + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
 
-                      </div>
+                      </Link>
+
+
                     )
                   })
                 }
+
+
+
               </div>
+          
+
+                <Link className={`w-1/2 block h-full bg-yellow-400`} style={{
+                  backgroundImage: "url(" + `${photos[2].photo}` + ")",
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat'
+                }} href={`/photo/${props.post.postid}/${photos[2].photoid}`}>
+
+                </Link>
+             
+
+
             </div>
+
           )
         }
 
@@ -186,55 +194,55 @@ export default async function FeedItem(props: { post: QueryResultRow }) {
           photos.length === 4 && (
 
 
-            <div className="grid grid-cols-2 gap-[0.3rem]">
-              <div className="grid grid-cols-12 gap-[0.3rem]">
+            <div className="h-[31rem] w-full flex space-x-1">
+
+              <div className="flex flex-col w-1/2 h-full space-y-1">
 
                 {
                   photos.slice(0, 2).map(photo => {
                     return (
-                      <div className="col-span-12" key={photo.photoid}>
-                        <Link href={`/photo/${props.post.postid}/${photo.photoid}`}>
-                          <Image
-                            className="w-full h-auto max-h-full"
-                            alt="Amanuel Ferede"
-                            src={photo.photo}
-                            width={0}
-                            height={0}
-                            sizes="100vh"
 
-                          />
-                        </Link>
+                      <Link key={photo.photoid} className={`w-full h-[15.5rem]`} style={{
+                        backgroundImage: "url(" + `${photo.photo}` + ")",
+                        backgroundPosition: 'top center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
 
-                      </div>
+                      </Link>
+
+
                     )
                   })
                 }
 
+
+
               </div>
-              <div className="grid grid-cols-12 gap-[0.3rem]">
+              <div className="flex flex-col w-1/2 h-full space-y-1">
 
                 {
                   photos.slice(2, 4).map(photo => {
                     return (
-                      <div className="col-span-12" key={photo.photoid}>
-                        <Link href={`/photo/${props.post.postid}/${photo.photoid}`}>
-                          <Image
-                            className="w-full object-cover"
-                            alt="Amanuel Ferede"
-                            src={photo.photo}
-                            width={0}
-                            height={0}
-                            sizes="100vh"
 
-                          />
-                        </Link>
+                      <Link key={photo.photoid} className={`w-full h-[15.5rem]`} style={{
+                        backgroundImage: "url(" + `${photo.photo}` + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
 
-                      </div>
+                      </Link>
+
+
                     )
                   })
                 }
 
+
+
               </div>
+
 
             </div>
 
@@ -245,47 +253,68 @@ export default async function FeedItem(props: { post: QueryResultRow }) {
           photos.length > 4 && (
 
 
-            <div className="grid grid-cols-2">
-              {
-                photos.slice(0, 3).map(photo => {
-                  return (
-                    <div key={photo.photoid}>
-                      <Link href={`/photo/${props.post.postid}/${photo.photoid}`}>
-                        <Image
-                          className="w-full h-full"
-                          alt="Amanuel Ferede"
-                          src={photo.photo}
-                          width={0}
-                          height={0}
-                          sizes="100vh"
+            <div className="h-[31rem] w-full flex space-x-1">
 
-                        />
+              <div className="flex flex-col w-1/2 h-full space-y-1">
+
+                {
+                  photos.slice(0, 2).map(photo => {
+                    return (
+
+                      <Link key={photo.photoid} className={`w-full h-[15.5rem]`} style={{
+                        backgroundImage: "url(" + `${photo.photo}` + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
+
                       </Link>
 
-                    </div>
-                  )
-                })
-              }
 
-              <div className="relative">
-                <div className="absolute flex items-center justify-center top-0 left-0 bottom-0 right-0 bg-black/65">
-                  <span className="text-white">
-                    {photos.length - 4} More
-                  </span>
-                </div>
-                <Link href={`/photo/${props.post.postid}/${photos[3].photoid}`}>
-                  <Image
-                    className="w-full h-full"
-                    alt="Amanuel Ferede"
-                    src={photos[3].photo}
-                    width={0}
-                    height={0}
-                    sizes="100vh"
+                    )
+                  })
+                }
 
-                  />
-                </Link>
+
 
               </div>
+              <div className="flex flex-col w-1/2 h-full space-y-1">
+
+                {
+                  photos.slice(2, 4).map((photo, i) => {
+                    if (i === 0) {
+                      return (
+                        <Link key={photo.photoid} className={`w-full h-[15.5rem]`} style={{
+                          backgroundImage: "url(" + `${photo.photo}` + ")",
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
+                          backgroundRepeat: 'no-repeat'
+                        }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
+
+                        </Link>
+                      )
+                    } else {
+                      return (
+                        <Link key={photo.photoid} className={`w-full h-[15.5rem] relative`} style={{
+                          backgroundImage: "url(" + `${photo.photo}` + ")",
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
+                          backgroundRepeat: 'no-repeat'
+                        }} href={`/photo/${props.post.postid}/${photo.photoid}`}>
+                          <div className="absolute z-20 top-0 bottom-0 left-0 right-0 bg-black/70 flex items-center justify-center">
+                            <p className="text-white text-lg">{photos.length - 4}+</p>
+                          </div>
+                        </Link>
+                      )
+                    }
+                  })
+                }
+
+
+
+              </div>
+
+
             </div>
 
           )
